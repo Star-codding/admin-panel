@@ -70,7 +70,7 @@ const data = [
         link: "/dashboard/material/add-material"
       },
       {
-        subName: "View Color",
+        subName: "View Material",
         link: "/dashboard/material/view-material"
       }
     ]

@@ -2,7 +2,6 @@
 import React from 'react'
 import { useState } from "react";
 
-
 export default function page() {
   const [colorName, setColorName] = useState("");
   const [colorCode, setColorCode] = useState("#000000");
@@ -16,11 +15,11 @@ export default function page() {
   return (
     <div>
       <div className="max-w-3xl ml-[50px] mt-10 p-6 bg-white rounded-2xl shadow border">
-        <h2 className="text-xl font-semibold mb-6">Add Colors</h2>
+        <h2 className="text-xl font-semibold mb-6">Add Material</h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block font-medium mb-1">Color Name</label>
+            <label className="block font-medium mb-1">Material Name</label>
             <input
               type="text"
               placeholder="Enter color name"
@@ -30,7 +29,7 @@ export default function page() {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label className="block font-medium mb-1">Color Picker</label>
             <input
               type="color"
@@ -38,7 +37,7 @@ export default function page() {
               onChange={(e) => setColorCode(e.target.value)}
               className="w-16 h-10 border rounded"
             />
-          </div>
+          </div> */}
 
           <div>
             <label className="block font-medium mb-1">Order</label>
@@ -55,7 +54,7 @@ export default function page() {
             type="submit"
             className="bg-black text-white px-6 py-2 rounded hover:bg-gray-800"
           >
-            Submit
+            Add Material
           </button>
         </form>
       </div>

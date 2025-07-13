@@ -1,23 +1,22 @@
 import React from 'react'
-import { MdEdit } from 'react-icons/md'
 
 export default function page() {
-    const enquiries = [
+  
+  const enquiries = [
     {
       id: 1,
-      userName: "Red",
-      email: "#ff0000",
+      userName: "Wood",
+      // email: "#ff0000",
       subject: "1",
       message: "Active"
-    },
-    
+    }
   ];
   return (
-    <>
+    <div>
       <div>
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-xl font-semibold">View User</h1>
+            <h1 className="text-xl font-semibold">View Material</h1>
             <div className="flex gap-2">
               <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
                 Filter
@@ -33,8 +32,8 @@ export default function page() {
               <thead>
                 <tr className="bg-gray-100 text-left">
                   <th className="p-3"><input type="checkbox" /></th>
-                  <th className="p-3">Color Name</th>
-                  <th className="p-3">Code</th>
+                  <th className="p-3">Material Name</th>
+                  {/* <th className="p-3">Code</th> */}
                   <th className="p-3">Order</th>
                   <th className="p-3">Status</th>
                   <th className="p-3">Action</th>
@@ -45,7 +44,7 @@ export default function page() {
                   <tr key={enquiry.id} className="border-t">
                     <td className="p-3"><input type="checkbox" /></td>
                     <td className="p-3">{enquiry.userName}</td>
-                    <td className="p-3">{enquiry.email}</td>
+                    {/* <td className="p-3">{enquiry.email}</td> */}
                     <td className="p-3">{enquiry.subject}</td>
                     <td className="p-3">
                       <span className="bg-green-500 text-white px-3 py-1 rounded">
@@ -64,6 +63,6 @@ export default function page() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

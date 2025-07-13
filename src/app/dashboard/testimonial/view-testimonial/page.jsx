@@ -5,16 +5,16 @@ export default function page() {
     {
       id: 1,
       userName: "Red",
-      email: "#ff0000",
+      email: "Lorem Ipsum dolor sit",
       subject: "1",
       message: "Active"
     }
   ];
   return (
-    <div>
+     <div>
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <h1 className="text-xl font-semibold">View Color</h1>
+          <h1 className="text-xl font-semibold">View Why Choose Us</h1>
           <div className="flex gap-2">
             <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
               Filter
@@ -30,8 +30,8 @@ export default function page() {
             <thead>
               <tr className="bg-gray-100 text-left">
                 <th className="p-3"><input type="checkbox" /></th>
-                <th className="p-3">Color Name</th>
-                <th className="p-3">Code</th>
+                <th className="p-3">Title</th>
+                <th className="p-3">Description</th>
                 <th className="p-3">Order</th>
                 <th className="p-3">Status</th>
                 <th className="p-3">Action</th>

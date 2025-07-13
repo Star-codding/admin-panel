@@ -24,24 +24,24 @@ const geistMono = Geist_Mono({
 // };
 
 export default function RootLayout({ children }) {
-  const [loading, setLoading] = useState(false)
-  const pathname = usePathname()
+  // const [loading, setLoading] = useState(false)
+  // const pathname = usePathname()
 
-  useEffect(() => {
-    setLoading(true)
+  // useEffect(() => {
+  //   setLoading(true)
 
-    const timeout = setTimeout(() => {
-      setLoading(false)
-    }, 700) // spinner dikhega 700ms ke liye jab route change hoga
+    // const timeout = setTimeout(() => {
+    //   setLoading(false)
+    // }, 700) // spinner dikhega 700ms ke liye jab route change hoga
 
-    return () => clearTimeout(timeout)
-  }, [pathname])
+  //   return () => clearTimeout(timeout)
+  // }, [pathname])
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {loading && <Loader />}  {/* yahi pe spinner lagega */}
+        {/* {loading && <Loader />}  yahi pe spinner lagega */}
 
         {children}
       </body>
