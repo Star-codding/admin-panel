@@ -1,30 +1,100 @@
 'use client'
-import React from 'react'
+import axios from 'axios';
+import { useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react'
 import { useState } from "react";
+// import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 export default function page() {
   const [colorName, setColorName] = useState("");
   const [colorCode, setColorCode] = useState("#000000");
   const [order, setOrder] = useState("");
+  const [colordetails, setcolordetails] = useState("");
+
+  const params = useParams();
+  const updateId = params.id;
+  const navigate = useRouter();
+
+
+
+  useEffect(() => {
+    if (updateId) {
+      axios.post(`http://localhost:8000/api/admin/color/details/${updateId}`)
+        .then((result) => {
+          if (result.data._status == true) {
+            setcolordetails(result.data._data)
+          } else {
+            toast.error(result.data._message);
+
+            for (var value of result.data._data) {
+              toast.error(value)
+            }
+          }
+        })
+        .catch(() => {
+          toast.error('Something went Wrong')
+
+          // for(var value of result.data. )
+        })
+    }
+  }, [updateId])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Form submit logic yahan daalo
+
+    const data = {
+      name: e.target.name.value,
+      code: e.target.code.value,
+      order: e.target.order.value
+    }
+
+    if (!updateId) {
+      axios.post('http://localhost:8000/api/admin/color/create', data)
+        .then((result) => {
+          if (result.data._status == true) {
+            toast.success(result.data._message)
+            setTimeout(() => {
+              navigate.push('/dashboard/color/view-color')
+            }, 2000);
+
+          } else {
+            toast.error(result.data._message);
+
+            for (var value of result.data._data) {
+              toast.error(value)
+            }
+          }
+        })
+        .catch(() => {
+          toast.error('Something went Wrong')
+
+          // for(var value of result.data. )
+        })
+    }
+
+
+
     console.log({ colorName, colorCode, order });
   };
   return (
     <div>
       <div className="max-w-3xl ml-[50px] mt-10 p-6 bg-white rounded-2xl shadow border">
-        <h2 className="text-xl font-semibold mb-6">Add Colors</h2>
+        <h2 className="text-xl font-semibold mb-6">
+          {updateId ? "Update color" : "Add Color"}
+        </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} autoComplete='off' className="space-y-5">
           <div>
             <label className="block font-medium mb-1">Color Name</label>
             <input
               type="text"
               placeholder="Enter color name"
               value={colorName}
+              name='name'
               onChange={(e) => setColorName(e.target.value)}
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             />
@@ -35,6 +105,7 @@ export default function page() {
             <input
               type="color"
               value={colorCode}
+              name='code'
               onChange={(e) => setColorCode(e.target.value)}
               className="w-16 h-10 border rounded"
             />
@@ -46,6 +117,7 @@ export default function page() {
               type="text"
               placeholder="Enter order"
               value={order}
+              name='order'
               onChange={(e) => setOrder(e.target.value)}
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             />
@@ -55,7 +127,7 @@ export default function page() {
             type="submit"
             className="bg-black text-white px-6 py-2 rounded hover:bg-gray-800"
           >
-            Submit
+            {updateId ? "Update Color" : "Add Color"}
           </button>
         </form>
       </div>

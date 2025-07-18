@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../common/Header'
 import Sidebar from '../common/Sidebar'
 import { ClipLoader } from 'react-spinners'; // import spinner
+import { Flip, ToastContainer } from 'react-toastify';
 
 
 export default function layout({ children }) {
@@ -30,6 +31,8 @@ export default function layout({ children }) {
 
   return (
     <div>
+
+      <ToastContainer transition={Flip}/>
       <Header sidebar={sidebar} setSidebar={setSidebar} />
 
       <div className={`grid duration-1000  ${sidebar ? ("grid-cols-[20%_auto] ") : ("grid-cols-[0%_auto] ")}`}>
